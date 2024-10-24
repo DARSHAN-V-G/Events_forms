@@ -1,0 +1,63 @@
+/* MainFormWithTransitions.css */
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f0f0f0;
+}
+
+.team-member-wrapper {
+  width: 400px;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  transition: all 0.5s ease;
+}
+
+/* Slide transition for moving forward */
+.slide-forward-enter {
+  transform: translateX(100%);
+  opacity: 0;
+}
+
+.slide-forward-enter-active {
+  transform: translateX(0);
+  opacity: 1;
+  transition: transform 500ms, opacity 500ms;
+}
+
+.slide-forward-exit {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.slide-forward-exit-active {
+  transform: translateX(-100%);
+  opacity: 0;
+  transition: transform 500ms, opacity 500ms;
+}
+
+/* Slide transition for moving backward */
+.slide-backward-enter {
+  transform: translateX(-100%);
+  opacity: 0;
+}
+
+.slide-backward-enter-active {
+  transform: translateX(0);
+  opacity: 1;
+  transition: transform 500ms, opacity 500ms;
+}
+
+.slide-backward-exit {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.slide-backward-exit-active {
+  transform: translateX(-100%);
+  opacity: 0;
+  transition: transform 500ms, opacity 500ms;
+}
