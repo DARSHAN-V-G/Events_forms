@@ -2,7 +2,6 @@
   "scripts": {
     "dev": "concurrently \"cd backend && npm run dev\" \"cd frontend/Event_forms && npm run dev\"",
     "install": "cd backend && npm install && cd ../frontend/Event_forms && npm install"
-  
   },
   "devDependencies": {
     "concurrently": "^6.2.1"

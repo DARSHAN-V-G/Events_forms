@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Grid</title>
+    <style>
+        /* Basic reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body styling */
+        body {
+            display:block;
+            justify-content:flex-start;
+            align-items:flex-start;
+            height: 100vh;
+            background: linear-gradient(to bottom, #2c3e50, #34495e);
+            font-family: Arial, sans-serif;
+        }
+
+        /* Container styling */
+        .container {
+            width: 100%;
+        }
+
+        /* Header section */
+        .header {
+            display: flex;
+            justify-content: flex-end;
+            padding: 20px;
+            background-color: #b0c4de;
+        }
+
+        .header button {
+            padding: 10px 20px;
+            font-size: 14px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* Grid styling */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            padding: 20px;
+        }
+
+        /* Individual grid item styling */
+        .grid-item {
+            background-color: #b0c4de;
+            padding: 15px;
+            height: 150px;
+            border-radius: 10px;
+        }
+
+        .overlay {
+            display: none; /* Initially hidden */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        /* Popup box styling */
+        .popup {
+            background-color: #b0c4de;
+            width: 500px;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .textbox {
+            width: 100%;
+            height: 40px;
+            border-radius: 10px;
+            padding: 5px;
+            margin-bottom: 20px;
+            font-size: 14px;
+            color: #333;
+        }
+
+        /* Create button styling */
+        .create-button {
+            padding: 10px 20px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="header">
+            <button onclick="showPopup()">CREATE NEW EVENT</button>
+        </div>
+        <div class="grid" id="eventGrid">
+            <!-- New event grid items will appear here -->
+        </div>
+    </div>
+    
+    <!-- Overlay and popup box -->
+    <div class="overlay" id="overlay" onclick="hidePopup(event)">
+        <div class="popup" onclick="event.stopPropagation()">
+            <p>Event name</p>
+            <input type="text" id="eventName" class="textbox" placeholder="Enter event name">
+            <p>Event details</p>
+            <input type="text" id="eventDetails1" class="textbox" placeholder="Enter details">
+            <p>Event details</p>
+            <input type="text" id="eventDetails2" class="textbox" placeholder="Enter details">
+            <p>Event details</p>
+            <input type="text" id="eventDetails3" class="textbox" placeholder="Enter details">
+            <button class="create-button" onclick="createNewEvent()">Create</button>
+        </div>
+    </div>
+    
+    <script>
+        // Function to show the popup
+        function showPopup() {
+            document.getElementById("overlay").style.display = "flex";
+        }
+
+        // Function to hide the popup when clicking outside of it
+        function hidePopup(event) {
+            document.getElementById("overlay").style.display = "none";
+        }
+
+        // Function to create a new event and add it to the grid
+        function createNewEvent() {
+            // Get values from text boxes
+            const eventName = document.getElementById("eventName").value;
+            const eventDetails1 = document.getElementById("eventDetails1").value;
+            const eventDetails2 = document.getElementById("eventDetails2").value;
+            const eventDetails3 = document.getElementById("eventDetails3").value;
+
+            // Create a new grid item
+            const gridItem = document.createElement("div");
+            gridItem.className = "grid-item";
+            gridItem.innerHTML = `
+                <h3>${eventName}</h3>
+                <p>${eventDetails1}</p>
+                <p>${eventDetails2}</p>
+                <p>${eventDetails3}</p>
+            `;
+
+            // Append new grid item to the grid
+            document.getElementById("eventGrid").appendChild(gridItem);
+
+            // Close the popup
+            hidePopup();
+        }
+    </script>
+
+</body>
+</html>

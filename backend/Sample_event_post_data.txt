@@ -1,0 +1,7 @@
+{
+  "event_name": "CodeOBingo",
+  "date": "2024-10-25",
+  "team_size": "2-3",
+  "description": "test event",
+  "other" : "some text separated with comma"
+}

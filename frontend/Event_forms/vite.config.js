@@ -11,5 +11,13 @@ export default defineConfig({
         changeOrigin: true,
       },
     },
+    optimizeDeps: {
+      exclude: [
+        'chunk-7YU3P52A',
+        'chunk-2GZ6ZNRT',
+        'chunk-LD2PXKD4',
+        'chunk-LB6HAPC7',
+      ],
+    },
   },
 })
